@@ -1,0 +1,60 @@
+<div class="card w-75" *ngFor="let auction of getAuction()">
+    <div class="card-body">
+        <span> <b>Created by:</b> {{ auction.seller}}</span>
+        <hr>
+        <p class="card-text"><b>Time Remaining:</b> {{calculateDiff(auction.prod_date)}} days</p>
+        <p class="card-text"><b>Description:</b> {{auction.prod_desc}}</p>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="card-text"><b>Current Highest Bid:</b></p>
+                <p>{{auction.prod_highest | currency }}</p>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-12 mb-3 form-group">
+                    <b>By:</b> {{ auction.prod_buyer }}
+                </div>
+                <form
+                        class="center-block"
+                        novalidate
+                        [formGroup]="auctionForm"
+                        [hidden]="hideBidButton(auction.seller)"
+                >
+                    <div class="form-row">
+                        <fieldset>
+                            <div class="col-md-12 mb-3 form-group">
+                                <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="bid"
+                                >
+                            </div>
+                        </fieldset>
+                        <div *ngIf="bid.invalid && (bid.dirty || bid.touched)"
+                             class="alert alert-danger">
+                            <div *ngIf="bid.errors?.required">
+                                Your bid is required.
+                            </div>
+                            <div *ngIf="bid.errors?.min">
+                                Price must be higher then the current bid.
+                            </div>
+                            <div *ngIf="bid.errors?.max">
+                                Price must not be higher then your wallet.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <fieldset>
+                            <div class="col-md-12 mb-3 form-group">
+                                <button
+                                        class="btn btn-primary"
+                                        [disabled]="!(auctionForm.valid)"
+                                        (click)="save()"
+                                >Bid !!!</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 content-justify-center">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Seller</th>
+                    <th scope="col">Top Bid</th>
+                    <th scope="col">Time Remaining</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let auction of auctionlist">
+                    <th scope="row">
+                        <a routerLink="/auction/{{auction.id}}">
+                            {{auction.prod_name}}
+                        </a>
+                    </th>
+                    <td>
+                        {{ auction.seller }}
+                    </td>
+                    <td>
+                        {{auction.prod_highest | currency }}
+                    </td>
+                    <td>
+                        {{this.calculateDiff(auction.prod_date)}} days
+                    </td>
+                    <td>
+                        <button
+                                type="button"
+                                class="btn btn-danger"
+                                (click)="deleteAuction(auction)"
+                                [hidden]="hideDeleteButton(auction.seller)"
+                        >Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <button class="btn btn-primary" routerLink="/new-auction">New Auction</button>
+        </div>
+        <div class="col-md-6 mb-3 text-right">
+            <h5>Your Current Wallet: {{ this.getWallet() | currency }}</h5>
+        </div>
+    </div>
+</div>

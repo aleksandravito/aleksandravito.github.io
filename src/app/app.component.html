@@ -1,0 +1,14 @@
+<app-header></app-header>
+<!-- main app container -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+    <alert></alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 content-justify-center">
+                <router-outlet></router-outlet>
+                <!--      <app-register></app-register>-->
+            </div>
+        </div>
+    </div>
+</div>
+

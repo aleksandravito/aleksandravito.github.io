@@ -1,0 +1,108 @@
+<div class="card w-25 m-auto">
+    <div class="card-body">
+        <form class="center-block" novalidate [formGroup]="heroForm">
+            <div class="form-row">
+                <fieldset>
+                    <div class="col-md-12 mb-3 form-group">
+                        <label for="validationDefault01">Product name <span class="text-danger">*</span></label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="validationDefault01"
+
+                                formControlName="name"
+                        >
+                    </div>
+                </fieldset>
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="name.errors?.required">
+                        Name is required.
+                    </div>
+                    <div *ngIf="name.errors?.minlength">
+                        Name must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <fieldset>
+                    <div class="col-md-12 mb-3 form-group">
+                        <label for="validationDefault03">Description <span class="text-danger">*</span></label>
+                        <textarea
+                                class="form-control"
+                                id="validationDefault03"
+                                rows="5"
+                                cols="100"
+
+                                formControlName="description"
+                        >
+      </textarea>
+                    </div>
+                </fieldset>
+                <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="description.errors?.required">
+                        Description is required.
+                    </div>
+                    <div *ngIf="description.errors?.minlength">
+                        Description must be at least 10 characters long.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <fieldset>
+                    <div class="col-md-12 mb-3 form-group">
+                        <label for="validationDefault04">Starting Bid <span class="text-danger">*</span></label>
+                        <input
+                                type="number"
+                                class="form-control"
+                                id="validationDefault04"
+
+                                formControlName="price"
+                        >
+                    </div>
+                </fieldset>
+                <div *ngIf="price.invalid && (price.dirty || price.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="price.errors?.required">
+                        Price is required.
+                    </div>
+                    <div *ngIf="price.errors?.min">
+                        Price must be at least 1 dollar.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <fieldset>
+                    <div class="col-md-12 mb-3 form-group">
+                        <label for="validationDefault05">End Date <span class="text-danger">*</span></label>
+                        <input
+                                type="date"
+                                class="form-control"
+                                id="validationDefault05"
+                                formControlName="enddate"
+                                [min]="latest_date"
+                        >
+                    </div>
+                </fieldset>
+                <div *ngIf="enddate.invalid && (enddate.dirty || enddate.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="enddate.errors?.required">
+                        End date is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <button class="btn btn-primary"
+                            type="submit"
+                            (click)="save(heroForm)"
+                            [disabled]="!(heroForm.valid)"
+                    >
+                        Create Auction
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
