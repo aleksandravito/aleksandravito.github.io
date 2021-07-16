@@ -7,6 +7,7 @@
                 <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                 <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                     <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    <div *ngIf="f.firstName.errors.maxlength">First Name needs less than 10 characters.</div>
                 </div>
             </div>
             <div class="form-group">
@@ -14,6 +15,7 @@
                 <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                     <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    <div *ngIf="f.lastName.errors.maxlength">Last Name needs less than 10 characters.</div>
                 </div>
             </div>
             <div class="form-group">
