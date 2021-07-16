@@ -22,6 +22,9 @@
                     <div *ngIf="name.errors?.minlength">
                         Name must be at least 4 characters long.
                     </div>
+                    <div *ngIf="name.errors?.maxlength">
+                        Name needs less than 15 characters.
+                    </div>
                 </div>
             </div>
             <div class="form-row">

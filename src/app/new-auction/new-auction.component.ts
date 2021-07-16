@@ -59,7 +59,8 @@ export class NewAuctionComponent implements OnInit {
 
       name: new FormControl('', [
         Validators.required,
-        Validators.minLength(4)
+        Validators.minLength(4),
+        Validators.maxLength(15)
       ]),
       description: new FormControl('', [
         Validators.required,
