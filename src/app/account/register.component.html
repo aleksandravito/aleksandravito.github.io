@@ -15,7 +15,7 @@
                 <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                     <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                    <div *ngIf="f.lastName.errors.maxlength">Last Name needs less than 10 characters.</div>
+                    <div *ngIf="f.lastName.errors.maxlength">Last Name needs less than 15 characters.</div>
                 </div>
             </div>
             <div class="form-group">
