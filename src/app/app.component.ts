@@ -3,14 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from './_services';
 import { User } from './_models';
 import { FunksioneAuction } from './utils/functions';
-import {Auction} from "./auction";
 import {AuctionStorageService} from "./auction-storage.service";
 
-import { Title } from '@angular/platform-browser';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
-
-
+import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
@@ -21,7 +16,6 @@ export class AppComponent extends FunksioneAuction implements OnInit{
     intervalId: number;
 
     user: User;
-    title = 'angulartitle';
 
     constructor(
         private accountService: AccountService,
@@ -70,27 +64,4 @@ export class AppComponent extends FunksioneAuction implements OnInit{
 
     }
 
-    // logout() {
-    //     this.accountService.logout();
-    // }
-
-    // getName() {
-    //
-    //     let title: string;
-    //
-    //     switch (this.router.url) {
-    //         case '/':
-    //             title = "Auctions";
-    //             break;
-    //         case '/new-auction':
-    //             title =  "New Auction";
-    //             break;
-    //         default:
-    //             title = "Auction";
-    //             break;
-    //     }
-    //
-    //     console.log('url ->', this.router.url[1] );
-    //     return title; //  /routename
-    // }
 }

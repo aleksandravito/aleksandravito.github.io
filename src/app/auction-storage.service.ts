@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-// import { AUCTIONS }
+
 const storageName = 'auction_list';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuctionStorageService {
 
   auctionList;
@@ -13,19 +14,17 @@ export class AuctionStorageService {
   constructor() {
     if (typeof this.storage === 'string') {
       this.auctionList = JSON.parse(this.storage);
-      console.log('tamam storage', this.auctionList);
     } else {
       this.auctionList = [];
-      console.dir('jo tamam', this.auctionList);
     }
   }
 
-  // get heroes
+  // get auctions
   get() {
     return this.auctionList;
   }
 
-  // update an hero
+  // update an auction
   put(item: any, changes: any) {
     Object.assign(this.auctionList[this.findItemIndex(item)], changes);
     return this.update();

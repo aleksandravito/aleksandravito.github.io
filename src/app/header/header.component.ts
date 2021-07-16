@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '../_models';
 import { AccountService } from '../_services';
+
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -10,6 +11,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit {
 
   user: User;

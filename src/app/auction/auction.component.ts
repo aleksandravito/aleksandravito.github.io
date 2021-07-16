@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+
 import {AuctionStorageService} from '../auction-storage.service';
-// import { AuctionListComponent } from '../auction-list/auction-list.component';
+
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {FunksioneAuction} from '../utils/functions';
 
@@ -15,6 +16,7 @@ import {Title} from "@angular/platform-browser";
   templateUrl: './auction.component.html',
   styleUrls: ['./auction.component.css']
 })
+
 export class AuctionComponent extends FunksioneAuction implements OnInit {
 
   @Input() auc_bid?: number;
@@ -31,7 +33,6 @@ export class AuctionComponent extends FunksioneAuction implements OnInit {
     super();
     this.user = this.accountService.userValue;
     this.titleService.setTitle(this.message);
-    // this.changeHeader(this.getAuction()[0].prod_name);
   }
 
   get bid() {
@@ -47,10 +48,8 @@ export class AuctionComponent extends FunksioneAuction implements OnInit {
     else {
       walletBuyer = this.getWallet() + this.getAuction()[0].prod_highest;
     }
-    console.log('walletBuyer ', walletBuyer);
     const higherBid = this.getAuction()[0].prod_highest + 1;
     this.auctionForm = new FormGroup({
-
       bid: new FormControl('', [
         Validators.required,
         Validators.min(higherBid),
@@ -68,7 +67,6 @@ export class AuctionComponent extends FunksioneAuction implements OnInit {
   }
 
   hideBidButton(seller: string): boolean {
-    console.log('fsheh ->' , this.user.firstName === seller );
     return this.user.firstName === seller || this.getWallet() === 0;
   }
 
@@ -83,17 +81,12 @@ export class AuctionComponent extends FunksioneAuction implements OnInit {
       updatedBuyer = {
         wallet: ( users[index].wallet - this.auctionForm.value.bid )
       }
-      console.log('shyqyr qenke ndryshe');
     }
     else {
      updatedBuyer = {
         wallet: ( this.getWallet() + this.getAuction()[0].prod_highest - this.auctionForm.value.bid )
       }
-      console.log('mos qenke njesoj');
     }
-    console.log('walletBuyer pas save ', this.getAuction()[0].prod_highest );
-    console.log('prodBuyer pas save ', this.auctionForm.value.bid );
-    console.log('firstName pas save ', this.user.firstName);
     Object.assign(users[index], updatedBuyer);
     localStorage.setItem('users_list', JSON.stringify(users));
 

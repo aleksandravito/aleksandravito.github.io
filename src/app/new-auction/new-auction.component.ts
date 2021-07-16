@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+
 import { AuctionStorageService } from '../auction-storage.service';
 import { AUCTIONS } from '../auctions';
 import {Auction} from '../auction';
-
 import { User } from '../_models';
 import { AccountService } from '../_services';
-import { DatePipe } from '@angular/common';
 
+import { DatePipe } from '@angular/common';
 import {Title} from "@angular/platform-browser";
 
 @Component({
@@ -22,7 +22,9 @@ export class NewAuctionComponent implements OnInit {
 
   currentDate = new Date();
   latest_date = this.datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+
   heroForm!: FormGroup;
+
   auction!: object;
 
   constructor(
@@ -33,8 +35,6 @@ export class NewAuctionComponent implements OnInit {
   ) {
     this.user = this.accountService.userValue;
     this.titleService.setTitle('New Auction');
-    // this.oldItems = JSON.parse(this.storage)!;
-
   }
 
   get name() {
@@ -96,11 +96,9 @@ export class NewAuctionComponent implements OnInit {
 
     newItem.push(addItem);
 
-    console.log('tipi -> ', heroForm.value.name);
     localStorage.setItem('auction_list', JSON.stringify(newItem));
 
     heroForm.reset();
 
   }
-
 }

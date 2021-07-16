@@ -1,6 +1,4 @@
 import {filter, map} from "rxjs/operators";
-import {NavigationEnd} from "@angular/router";
-import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuctionComponent } from "../auction/auction.component";
 
@@ -14,7 +12,14 @@ export class FunksioneAuction {
         const currentDate = new Date();
         dateSent = new Date(dateSent);
         // tslint:disable-next-line:max-line-length
-        return Math.floor((Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate()) - Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) ) / (1000 * 60 * 60 * 24));
+        return Math.floor(
+            (Date.UTC(dateSent.getFullYear(),
+                dateSent.getMonth(),
+                dateSent.getDate()) -
+                Date.UTC(currentDate.getFullYear(),
+                    currentDate.getMonth(),
+                    currentDate.getDate()) )
+            / (1000 * 60 * 60 * 24));
     }
 
     public getWallet(): any {

@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
-import { HomeComponent } from './home';
 import { NewAuctionComponent } from './new-auction/new-auction.component';
 import { AuctionListComponent } from './auction-list/auction-list.component';
 import { AuctionComponent } from './auction/auction.component';
@@ -27,7 +26,6 @@ import { HeaderComponent } from './header/header.component';
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent,
         NewAuctionComponent,
         AuctionListComponent,
         AuctionComponent,

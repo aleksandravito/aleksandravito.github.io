@@ -9,13 +9,6 @@ import { AuthGuard } from './_helpers';
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
 
-// let nameAuction: string;
-// if (nameAuction) {
-//     nameAuction = this.getAuction()[0]?.prod_name || 'X';
-// }
-
-// console.log('auction ', this.getAuction()[0].prod_name );
-
 const routes: Routes = [
     { path: '',
         component: AuctionListComponent,
@@ -24,7 +17,6 @@ const routes: Routes = [
         data: {title: 'Auctions'} },
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
-    // { path: 'auctions-list', component: AuctionListComponent },
     { path: 'auction/:id', component: AuctionComponent, canActivate: [AuthGuard]},
     { path: 'new-auction', component: NewAuctionComponent, canActivate: [AuthGuard], data: {title: 'New Auction'} },
 
